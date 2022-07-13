@@ -5,7 +5,6 @@
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             document.getElementById("count").innerHTML = this.responseText;
-            document.getElementsByTagName('meta').namedItem('og:description').setAttribute(this.responseText);
         }
     }
     const url='https://fishgame.azurewebsites.net/api/playercount/v1/get';
@@ -22,6 +21,10 @@
             font-size: 1000%;
             color: white;
             text-align: center;
+        }
+        .preview{
+            margin: auto;
+	        padding: 20px;
         }
     </style>
     <head>
@@ -40,5 +43,9 @@
     </head>
     <body background="https://fishgamevr.com/FishXPWeb.png">
         <p id="count" class="text"></p>
+        <div class="preview">
+            <iframe src="https://data.gorillatag.co.uk/fishgame/?duration=48" class="fishgamedb" frameborder="0" border="0" cellspacing="0"
+            style="border-style: none;width: 100%; min-height: 450px;"></iframe>
+        </div> 
     </body>
 </html>
