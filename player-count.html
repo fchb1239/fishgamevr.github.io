@@ -1,0 +1,44 @@
+<html>
+    <script>
+    const Http = new XMLHttpRequest();
+    Http.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            document.getElementById("count").innerHTML = this.responseText;
+            document.getElementById("meta").setAttribute("description", this.responseText);
+        }
+    }
+    const url='https://fishgame.azurewebsites.net/api/playercount/v1/get';
+    Http.open("GET", url);
+    Http.send();
+    </script>
+    <style>
+        .header{
+            padding: 20px;
+            background: #FFFFFF;
+        }
+        .text{
+            font-family: "Arial";
+            font-size: 1000%;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <head>
+        <title>Fish Game</title>
+    	<meta content="Fish Game - Player Count" property="og:title">
+    	<meta content="Pretty fishy game. Download for free on App Lab." property="og:description">
+    	<meta content="https://fishgamevr.com" property="og:url">
+    	<meta content="https://fishgamevr.com/HappiFish.png" property="og:image">
+    	<meta content="#00AEFF" data-react-helmet="true" name="theme-color">
+        <link rel="icon" href="https://fishgamevr.com/HappiFish.png" type="image/x-icon">
+        <div class="header">
+            <a href="https://fishgamevr.com/"><img src="https://fishgamevr.com/FishGameTopThing.png" width="107" height="40"></a>
+            <a href="https://soundcloud.com/fishgame"><img src="https://fishgamevr.com/Headphones.png" width="40" height="40"></a>
+            <!-- <a href="https://fishgamevr.com/privacy-policy" class="button"><pre style="word-wrap: break-word; white-space: pre-wrap;">Privacy Policy</pre></a> --->
+        </div>
+    </head>
+    <body background="https://fishgamevr.com/FishXPWeb.png">
+        <p id="count" class="text"></p>
+    </body>
+</html>
