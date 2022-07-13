@@ -5,7 +5,7 @@
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
             document.getElementById("count").innerHTML = this.responseText;
-            document.getElementById("meta").setAttribute("description", this.responseText);
+            document.getElementsByTagName('meta').namedItem('og:description').setAttribute(this.responseText);
         }
     }
     const url='https://fishgame.azurewebsites.net/api/playercount/v1/get';
