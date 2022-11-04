@@ -32,6 +32,7 @@
 
         function getCookie(cookie)
         {
+            console.log(document.cookies);
             var c = document.cookie.split("; ");
             c.forEach(element => {
                 if (element.startsWith(cookie)){
