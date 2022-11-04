@@ -4,8 +4,8 @@
             if (getCookie("login") != "")
             {
                 console.log(document.cookie);
-                console.log(getCookie("login"));
-                let data = atob(getCookie("login"));
+                let token = getCookie("login");
+                let data = atob(token);
 
                 const Http = new XMLHttpRequest();
                 Http.onreadystatechange = function() {
@@ -37,12 +37,9 @@
             const parts = value.split(`; ${name}=`);
             if (parts.length === 2) return parts.pop().split(';').shift();
             */
-            console.log(document.cookie);
             var c = document.cookie.split("; ");
             c.forEach(element => {
-                console.log(element);
                 if (element.startsWith(cookie)){
-                    console.log(element.split("=")[1]);
                     return element.split("=")[1];
                 }
             });
