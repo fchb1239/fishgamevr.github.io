@@ -1,35 +1,33 @@
 <html>
     <script>
         function load(){
-            if (window.location.hash.substring.length > 0){
-                if (getCookie("login") != "")
-                {
-                    let data = atob(getCookie("login"));
-                    console.log(data);
-                    document.cookie = "login=" + window.location.hash.substring(1);
+            if (getCookie("login") != "")
+            {
+                console.log(getCookie("login"));
+                let data = atob(getCookie("login"));
+                console.log(data);
 
-                    const Http = new XMLHttpRequest();
-                    Http.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            console.log("Logged in");
-                        }
+                const Http = new XMLHttpRequest();
+                Http.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log("Logged in");
                     }
+                }
 
-                    var desData = JSON.parse(data);
+                var desData = JSON.parse(data);
 
-                    var request = {
-                        "Platform": "META",
-                        "AuthCode": desData.code,
-                        "Id": desData.org_scoped_id
-                    }
+                var request = {
+                    "Platform": "META",
+                    "AuthCode": desData.code,
+                    "Id": desData.org_scoped_id
+                }
 
-                    console.log(request);
+                console.log(request);
 
             
-                    Http.open("POST", "https://fishgame.azurewebsites.net/api/auth/v1/sso/login");
-                    Http.send(JSON.stringify(request));
-                }
-            }   
+                Http.open("POST", "https://fishgame.azurewebsites.net/api/auth/v1/sso/login");
+                Http.send(JSON.stringify(request));
+            } 
         }
 
         function getCookie(cookie)
