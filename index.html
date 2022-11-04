@@ -3,9 +3,9 @@
         function load(){
             if (getCookie("login") != "")
             {
+                console.log(document.cookie);
                 console.log(getCookie("login"));
                 let data = atob(getCookie("login"));
-                console.log(data);
 
                 const Http = new XMLHttpRequest();
                 Http.onreadystatechange = function() {
