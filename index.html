@@ -37,10 +37,12 @@
             const parts = value.split(`; ${name}=`);
             if (parts.length === 2) return parts.pop().split(';').shift();
             */
-            console.log(document.cookies);
+            console.log(document.cookie);
             var c = document.cookie.split("; ");
             c.forEach(element => {
+                console.log(element);
                 if (element.startsWith(cookie)){
+                    console.log(element.split("=")[1]);
                     return element.split("=")[1];
                 }
             });
