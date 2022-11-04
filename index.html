@@ -1,4 +1,45 @@
 <html>
+    <script>
+        function load(){
+            if (window.location.hash.substring.length > 0){
+                if (getCookie("login") != "")
+                {
+                    let data = atob(getCookie("login"));
+                    console.log(data);
+                    document.cookie = "login=" + window.location.hash.substring(1);
+
+                    const Http = new XMLHttpRequest();
+                    Http.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            console.log("Logged in");
+                        }
+                    }
+
+                    var desData = JSON.parse(data);
+
+                    var request = {
+                        "Platform": "META",
+                        "AuthCode": desData.code,
+                        "Id": desData.org_scoped_id
+                    }
+
+                    console.log(request);
+
+            
+                    Http.open("POST", "https://fishgame.azurewebsites.net/api/auth/v1/sso/login");
+                    Http.send(JSON.stringify(request));
+                }
+            }   
+        }
+
+        function getCookie(cookie)
+        {
+            // https://stackoverflow.com/questions/10730362/get-cookie-by-name
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift()
+        }
+    </script>
     <style>
 
         /* width */
@@ -69,9 +110,10 @@
             <!-- <a href="https://fishgamevr.com/privacy-policy" class="button"><pre style="word-wrap: break-word; white-space: pre-wrap;">Privacy Policy</pre></a> --->
         </div>
     </head>
-    <body background="https://fishgamevr.com/FishXPWeb.png" style="background-color:#33475b">
+    <body onload="load()" background="https://fishgamevr.com/FishXPWeb.png" style="background-color:#33475b">
         <div class="content"><iframe width="100%" height="404" src="https://www.youtube.com/embed/AsrRBximKvI" title="Fish Game Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
         <div class="content"><button class="button" onclick="window.open('https://www.oculus.com/experiences/quest/6556848877722096/','_blank')">Download</button></div>
+        <!-- <div class="content"><button class="button" onclick="login()">Login</button></div> --->
         <div class="content">
             <img src="https://fishgamevr.com/Fishy1Disc.png" width="23%" height="%10">
             <img src="https://fishgamevr.com/Fishy2Campfire.png" width="23%" height="%10">
