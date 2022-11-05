@@ -15,16 +15,16 @@
                 }
             });
 
-            console.log("Token: " + token);
             if (token != undefined)
             {
                 console.log(document.cookie);
-                console.log("Token: " + token);
                 let data = atob(token.toString());
 
                 const Http = new XMLHttpRequest();
                 Http.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
+                        var response = JSON.parse(this.responseText);
+                        console.log(this.responseText);
                         console.log("Logged in");
                     }
                 }
