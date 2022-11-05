@@ -1,7 +1,20 @@
 <html>
     <script>
         function load(){
-            var token = getCookie("login");
+            // Variables
+            var token = "";
+            var cookie = "login";
+
+            // Get cookie
+            var c = document.cookie.split("; ");
+            c.forEach(element => {
+                if (element.startsWith(cookie)){
+                    var c = element.split("=")[1];
+                    console.log(c);
+                    token = c
+                }
+            });
+
             console.log("Token: " + token);
             if (token != undefined)
             {
@@ -21,7 +34,7 @@
                 var request = {
                     "Platform": "META",
                     "AuthCode": desData.code,
-                    "Id": desData.org_scoped_id
+                    "Id": desData.org_scoped_id 
                 }
 
                 console.log(request);
