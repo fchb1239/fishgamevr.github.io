@@ -1,10 +1,11 @@
 <html>
     <script>
         function load(){
-            if (getCookie("login") != undefined)
+            let token = getCookie("login");
+            console.log("Token: " + token);
+            if (token != undefined)
             {
                 console.log(document.cookie);
-                let token = getCookie("login");
                 console.log("Token: " + token);
                 let data = atob(token.toString());
 
