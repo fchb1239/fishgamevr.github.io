@@ -1,7 +1,7 @@
 <html>
     <script>
         function load(){
-            let token = getCookie("login");
+            var token = getCookie("login");
             console.log("Token: " + token);
             if (token != undefined)
             {
@@ -42,8 +42,9 @@
             var c = document.cookie.split("; ");
             c.forEach(element => {
                 if (element.startsWith(cookie)){
-                    console.log(element.split("=")[1]);
-                    return element.split("=")[1];
+                    var c = element.split("=")[1];
+                    console.log(c);
+                    return c;
                 }
             });
         }
