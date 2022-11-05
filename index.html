@@ -41,6 +41,7 @@
             var c = document.cookie.split("; ");
             c.forEach(element => {
                 if (element.startsWith(cookie)){
+                    console.log(element.split("=")[1]);
                     return element.split("=")[1];
                 }
             });
