@@ -5,27 +5,7 @@
                 let data = atob(window.location.hash.substring(1));
                 console.log(data);
                 document.cookie = "login=" + window.location.hash.substring(1);
-
-                const Http = new XMLHttpRequest();
-                Http.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        window.location.href = "https://fishgamevr.com";
-                    }
-                }
-
-                var desData = JSON.parse(data);
-
-                var request = {
-                    "Platform": "META",
-                    "AuthCode": desData.code,
-                    "Id": desData.org_scoped_id
-                }
-
-                console.log(request);
-
-            
-                Http.open("POST", "https://fishgame.azurewebsites.net/api/auth/v1/sso/login");
-                Http.send(JSON.stringify(request));
+                window.location.href = "https://fishgamevr.com";
             }   
         }
     </script>
